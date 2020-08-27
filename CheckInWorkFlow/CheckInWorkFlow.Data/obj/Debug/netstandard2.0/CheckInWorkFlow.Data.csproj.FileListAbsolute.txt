@@ -1,0 +1,9 @@
+/home/user/Code/CheckInWorkFlow/CheckInWorkFlow.Data/bin/Debug/netstandard2.0/CheckInWorkFlow.Data.deps.json
+/home/user/Code/CheckInWorkFlow/CheckInWorkFlow.Data/bin/Debug/netstandard2.0/CheckInWorkFlow.Data.dll
+/home/user/Code/CheckInWorkFlow/CheckInWorkFlow.Data/bin/Debug/netstandard2.0/CheckInWorkFlow.Data.pdb
+/home/user/Code/CheckInWorkFlow/CheckInWorkFlow.Data/obj/Debug/netstandard2.0/CheckInWorkFlow.Data.csprojAssemblyReference.cache
+/home/user/Code/CheckInWorkFlow/CheckInWorkFlow.Data/obj/Debug/netstandard2.0/CheckInWorkFlow.Data.AssemblyInfoInputs.cache
+/home/user/Code/CheckInWorkFlow/CheckInWorkFlow.Data/obj/Debug/netstandard2.0/CheckInWorkFlow.Data.AssemblyInfo.cs
+/home/user/Code/CheckInWorkFlow/CheckInWorkFlow.Data/obj/Debug/netstandard2.0/CheckInWorkFlow.Data.csproj.CoreCompileInputs.cache
+/home/user/Code/CheckInWorkFlow/CheckInWorkFlow.Data/obj/Debug/netstandard2.0/CheckInWorkFlow.Data.dll
+/home/user/Code/CheckInWorkFlow/CheckInWorkFlow.Data/obj/Debug/netstandard2.0/CheckInWorkFlow.Data.pdb

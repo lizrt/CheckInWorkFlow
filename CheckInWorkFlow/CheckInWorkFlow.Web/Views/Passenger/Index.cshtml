@@ -1,0 +1,66 @@
+@model IEnumerable<PassengerModel>
+@{
+    var AppointmentId=TempData["AppointmentId"];
+    
+}
+@if(Model.Count()>0){
+<div class="container">
+     @if(AppointmentId==null)
+        {
+  <h2>Passengers List</h2>
+        }
+        else
+        {
+            <h2>Available Passengers</h2>
+        }
+    <div class="row ">
+        @if(AppointmentId==null)
+        {
+    <a class="btn btn-primary" asp-controller="Passenger" asp-action="Create">Add Passenger</a>
+        }
+    <br/>
+</div>
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Weight</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                    <tr>
+                        <td> @item.FirstName</td>
+                        <td> @item.LastName</td>
+                        <td> @item.Weight</td>
+                        <td> @item.Status.DisplayName()</td>
+                         @if(AppointmentId!=null)
+                         {
+                              @* <td> <a class="btn btn-primary"  asp-controller="Passenger" asp-action="BookPassengerData" asp-route-PassengerId=@item.Id>Book Passenger</a></td> *@
+
+                        var parms = new Dictionary<string, string>
+                                    {
+                                        { "AppointmentId", AppointmentId.ToString() },
+                                        { "PassengerId", item.Id.ToString() }
+                                    };
+
+                             
+                             <td> <a class="btn btn-primary" asp-controller="Passenger" asp-action="BookPassengerData" asp-all-route-data="parms">Book Passenger</a></td>
+                         }
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+         <div asp-validation-summary="All" class="text-danger"></div>
+    </div>
+</div>
+}
+else{
+    <div class="row">
+        No Passengers available
+    </div>
+}

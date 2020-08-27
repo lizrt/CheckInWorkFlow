@@ -1,0 +1,70 @@
+@using CheckInWorkFlow.Web.ViewModels
+@model AppointmentModel
+@{
+    ViewData["Title"] = "Book Appointments";
+}
+
+<div class="container">
+     <a class="btn btn-info" asp-controller="Passenger" asp-action="BookPassenger" asp-route-AppointmentId=@Model.Id>Book Passenger</a>
+@if(Model.ScheduledPassengers.Any())
+{
+  <h2>Scheduled Passengers in Appointment @Model.Id</h2>
+        
+  
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Passenger Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.ScheduledPassengers) {
+                    <tr>
+                        <td>@item.FirstName &nbsp; @item.LastName</td>
+                        <td>
+                             <a class="btn btn-danger" asp-controller="Passenger" asp-action="CancelAppointment" asp-route-PassengerId="@item.Id">Remove Passenger</a>
+                        </td>
+                    </tr>
+                   
+                }
+            </tbody>
+
+
+        </table>
+       
+           @* <form asp-controller="Appointment" asp-action="BookPassenger" method="Post">
+
+            <select asp-for="Model.p" 
+                    asp-items="@(new SelectList(Model.AvailablePassengers,"Id","FullName"))">
+                <option>Please select one</option>
+            </select>
+
+           <a class="btn btn-primary" type="submit">Book passenger to this Appointment</a>
+
+        </form> *@
+
+    </div>
+    <div class="row">
+     @await Component.InvokeAsync("PassengerSummary", new { AppointmentId = Model.Id});
+    </div>
+     <div class="row">
+     <a class="btn btn-success" asp-controller="Appointment" asp-action="ConfirmAppointment" asp-route-AppointmentId="@Model.Id">Confirm Appointment</a>
+&nbsp;
+     <a class="btn btn-danger" asp-controller="Appointment" asp-action="DenyAppointment" asp-route-AppointmentId="@Model.Id">Deny Appointment</a>
+
+</div>
+}
+else
+{
+<div>No passengers for appointment</div>
+
+}
+</div>
+
+@* @if(Model.ScheduledPassengers.Any())
+{
+    await Component.InvokeAsync("PassengerSummary", new { AppointmentId = Model.Id});
+@* <vc:PassengerSummary AppointmentId=@Model.Id>  
+    </vc:PassengerSummary>   *@
+ 

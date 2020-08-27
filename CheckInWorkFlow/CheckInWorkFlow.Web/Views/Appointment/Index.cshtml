@@ -1,0 +1,39 @@
+@model IEnumerable<AppointmentModel>
+@{
+    ViewData["Title"] = "Appointments";
+}
+<div class="container">
+  <h2>Appointments List</h2>
+        
+  
+    <div class="panel-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>AppointmentId</th>
+                    <th>Date Of Appointment</th>
+                    <th>Capacity</th>
+                    <th>Confirmation Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model) {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td> @item.DateOfAppointment</td>
+                        <td> @item.Capacity</td>
+                        <td> @item.Confirmationstatus</td>
+                        <td>
+                            @if(item.IsConfirmed==null){
+                             <a class="btn btn-info" asp-controller="Appointment" asp-action="ViewAppointment" asp-route-id="@item.Id">View Appointment</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+         <a class="btn btn-primary" asp-controller="Appointment" asp-action="Create">New Appointment</a>
+
+    </div>
+</div>
